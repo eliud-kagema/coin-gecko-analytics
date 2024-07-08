@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Coins</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>All Coins</h1>
+  <input type="text" id="searchInput" placeholder="Search...">
+  <ul id="coin-list"></ul>
+
+  <script>
+    async function fetchCoins() {
+      try {
+        const response = await fetch('/coins');
+        const coins = await response.json();
+        return coins;
+      } catch (error) {
+        console.error('Error fetching coins:', error);
+        return [];
+      }
+    }
+
+    async function displayCoins() {
+      const coins = await fetchCoins();
+      const coinList = document.getElementById('coin-list');
+      const searchInput = document.getElementById('searchInput');
+
+      searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredCoins = coins.filter(coin => coin.name.toLowerCase().includes(searchTerm));
+        renderCoinList(filteredCoins);
+      });
+
+      renderCoinList(coins);
+    }
+
+    function renderCoinList(coins) {
+      const coinList = document.getElementById('coin-list');
+      coinList.innerHTML = '';
+
+      coins.forEach(coin => {
+        const listItem = document.createElement('li');
+
+        listItem.textContent = `${coin.name} (${coin.symbol.toUpperCase()})`;
+        
+        coinList.appendChild(listItem);
+      });
+    }
+
+    displayCoins();
+  </script>
+</body>
+</html>
