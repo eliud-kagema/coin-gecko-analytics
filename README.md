@@ -24,7 +24,7 @@ Within this repository, you'll find a JavaScript,
 4. Run 
 
    ```bash
-    node index,js
+    node index.js
 
 5. Access to web interface via http://localhost:4000
 
