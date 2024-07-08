@@ -11,11 +11,20 @@ Within this repository, you'll find a JavaScript,
    ```bash
    git clone https://github.com/eliud-kagema/coin-gecko-analytics.git
 
-2. Run cd coin-gecko-analytics
+2. Run 
 
-3. Run npm insy=tall
+    ```bash
+    cd coin-gecko-analytics
 
-4. Run node index,js
+3. Run 
+
+    ```bash
+    npm install
+
+4. Run 
+
+   ```bash
+    node index,js
 
 5. Access to web interface via http://localhost:4000
 
